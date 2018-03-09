@@ -1,3 +1,4 @@
+#Dynamic Time Warping Algorithm
 import numpy as np
 
 def absdiff(num1, num2):
