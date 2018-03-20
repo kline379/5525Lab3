@@ -1,22 +1,13 @@
 # 5525Lab3
+Our lab and the results produced are stored in the "lab3" python notebook file. 
 
-Homework worth 25 points, bonus extensions up to 10 additional points.
+## Required Part
+The first block of code shows the generation of MFCCs and the second block the dymanic time warping algorithm.  From there, we test the DTW algorithm by calculating the distance between "a" and "b" samples of the same and different sounds.
 
-## Part 0 (required, 23 points):
+The testing of the DTW algorithm in the third block shows that the algorithm is very accurate as pairs that are the same number always have a distance of "0" once they are time warped whereas many of the other pairings have large distances.
 
-a) Implement the MFCC calculation algorithm.  
+## Extension 3:
+The fourth block contains extension 3 which demonstrates the results of using an MoG algorithm to model the differences along with a graph of how changing the number of components changes the scoring against the "b" test data.
 
-b) Adapt the Dynamic Time Warping algorithm to allow you to calculate a score comparing two waveforms.  Local distances should be calculated by comparing two vectors of speech representations (see part c) using a suitable distance metric.
-
-c) For the dataset given, compare the scores (and possibly alignments) between pairs of wavefiles that you choose, using both MFCC representations and Log Spectral representations.  What do you observe in terms of overall scores?  What do you notice in matched vs. mismatched pairs?
-
-d) Create a classifier that uses the "a" versions of the wave files as templates, and "b" as the test items.  How accurate are both representations?
-
-## Extension 1 (2 points):  
-Record your own set of digits (zero through nine plus oh) for each of your group members.  Use these as test items against the "a" templates.  What is the accuracy?  If you use all data except one person's data as the templates, does accuracy change?  Rotate your test set through all of the group members' speech.  (Make sure to create a zip file with your recorded speech for the TA to be able to grade.)
-
-## Extension 2 (2 points): 
-Develop a visualization of the alignment between two waveforms similar to that on slide 28 of Week 8's slides.  Describe what you see when you align 5a.wav against 9a.wav.
-
-## Extension 3 (10 points):  
-Train a Mixture of Gaussians on the MFCC slices from all "a" templates.  You may use an off-the-shelf Mixture of Gaussian implementation for this purpose (just be sure it can handle multivariate Gaussians).  Since you are using MFCCs, you can assume diagonal covariance matrices.   Train a reasonable number of Gaussians (start with 32).  Each Gaussian can be used as a local estimator of the log likelihood -- log P(acoustics|class).  Now transform your template recognition problem into one where you use the distance between the log likelihoods of all Gaussians instead of distance between MFCCs.  Plot accuracy against number of Gaussians (ranging from 2 to 128), using 5 different initializations of the MoG algorithm to get a sense of the accuracy variance.
+## Extension 2:
+Extension 2 is found in the last block which is a modified version of our DTW algorithm.  It traces the shortest path and maps it out on a graph.  An examples of tracing between 5 and 9 is shown. When matching 5 to 9, it appears that the algorithm attempts to map similarly sounding parts of the numbers to one another, for instance, both have the same vowel at the beginning.
